@@ -1,0 +1,30 @@
+@import url("./reset.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Roboto Regular";
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto Medium";
+    src: url("../fonts//Roboto-Medium.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto Bold";
+    src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: "Roboto-Regular", sans-serif;
+    font-weight: normal;
+}
