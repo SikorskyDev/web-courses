@@ -1,48 +1,17 @@
-#Тестовий проект Front-End School 2.0 Genesis
+Тестовий проект Front-End School 2.0 Genesis
 
-# Getting Started with Create React App
+Проект написаний на ReactJS, TypeScript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Для отримання інформації по API http://api.wisey.app/api/v1/core/preview-courses використовую RTK Query. Оскільки була проблема із CORS я створив локальний сервер на NodeJS (https://github.com/SikorskyDev/server-for-courses). На сервері я роблю запит на отримання токену. Після отримання токену роблю відповідний запит на отримання списку курсів та окремого курсу по id. Отримані на сервері відповіді перенаправляю на фронтенд.
 
-## Available Scripts
+При завантаженні даних відображається простий лоадер. При помилкі отримання даних від сервера - відображається відповідне повідомлення.
 
-In the project directory, you can run:
+Голован сторінка "/" виводить список всіх курсів. При наведенні курсору на блок програється відео-прев*ю. Стан пагінації зберігаю в слайсі Redux Toolkit для того.
 
-### `npm start`
+При натискані на курс переходимо на сторінку курсу "/:id". При переході на вказану сторінку автоматично програється відео (зменшив звук за умовчанням). Під відео добавив вказівки про те, що якщо на клавіатурі натиснути "+" або "-" швидкість відео відповідно буде або збільшуватись або зменшуватись. 
+На сторінці, окрім відео, відображається - Заголовок курсу, підзаголовок, дата початку курсу (переробив формат дати) та перелік уроків.
+В кожного уроку є свій заголовок, статус (locked/ublocked) та рейтинг який відображає на скільки процентів (пргрес) користувач переглянув відео. В залежності від статусу (locked/ublocked) посилання відповідно або працює або ні. Прогрес перегляду відео уроку зберігається по відповідному id в слайсі та за допомогою redux-persist в local storage. Добавлена логіка, щоб прогрес відео може тільки збільшуватись в залежності від перегляду.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+По натисканню на урок переходимо на сторіку "/:id/:lessonid" із відео уроком та його заголовокм.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+На кожній сторінці є кнопка для того, щоб повернутись на попередню сторінку.
